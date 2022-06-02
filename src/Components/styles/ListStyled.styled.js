@@ -18,7 +18,10 @@ const ListStyled = styled.div`
         display: flex;        
                
     }
-    .table  .coinName {
+    .coin {
+        padding: 15px 0;
+    }
+    .table  .coinName, .coinHeader {
         margin-right: 30px;
     }
     .rank {
@@ -26,8 +29,24 @@ const ListStyled = styled.div`
         width: 5%;
 
     }
-    .coinName {
+    .coinHeader,.coinName {
         width: 30%;      
+    }
+    .ListCoinName {
+
+        width: 90%;
+    }
+    .ListCoinNameSpanElement{
+        margin-right: 10px;
+        display: inline-block;
+        width: 50%;
+    }
+    .symbol {
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+    .coinHeader a {
+        display: flex;        
     }
     .price {
         width: 20%;
@@ -36,8 +55,7 @@ const ListStyled = styled.div`
         width: 20%;
     }
 
-    .underline {
-        margin: 10px 0;        
+    .underline {               
         width: 100%;
         height: 1px;
         background-color: #e6e6e6;
@@ -50,6 +68,16 @@ const ListStyled = styled.div`
         margin-right: 10px;
         width: 20px;
         height: 20px;
+    }
+    .decrease {
+        color: red;        
+    }
+    .increase {
+        color: green;
+    } 
+
+    .container:hover {
+        background-color: white;
     }
     
     @media only screen and (max-width: 425px) {

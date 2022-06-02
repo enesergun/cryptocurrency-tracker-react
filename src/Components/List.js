@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Star from '../Constants/icons/Star';
 
 import 'animate.css';
 import NotAvailable from '../Constants/icons/NotAvailable';
+import { Link } from 'react-router-dom';
 
 
-const List = ({listData, handleFavorite, star}) => {    
-   
-
-
+const List = ({listData, handleFavorite, star, favoriteList}) => {       
+     
+    
+    
   return (
     <div className='animate__animated animate__backInLeft '>        
     <div className="table">                
@@ -22,26 +23,37 @@ const List = ({listData, handleFavorite, star}) => {
     <div className="underline"></div>            
         {
             listData?.map((coin, id) => (
-                <div key={id}>
+                
+                <div key={id} className="container">
                 <div className="coin" >                        
                     <div className="star" onClick={() => handleFavorite(coin)}>
-                        <Star color={star ? '#fc6' : "gray"}/>  
+                        <Star color={favoriteList?.includes(coin) ? '#fc6' : star ? '#fc6' : "gray"}/>  
                     </div>                                              
                     <div className="rank">{coin.market_cap_rank}</div>
+                    <div className='coinHeader'>
+                    <Link to={`/coins/${coin.id}`}>
                     <div className="criptoLogo">
                         {
                             coin.image ? <img src={coin.image} alt="" /> : <NotAvailable />
                         }
                     </div>
-                    <div className="coinName">{coin.name}</div>
+                    <div className="coinName ListCoinName">
+                        <span className='ListCoinNameSpanElement'><strong>{coin.name}</strong></span>
+                        <span className='symbol'>{coin.symbol}</span>
+                        </div>
+                    
+                    </Link>
+                    </div>
                     <div className="price">${coin.current_price}</div>
-                    <div className="hourCurrency">{coin.price_change_percentage_24h}</div>
-                    <div className="hourVolume">{coin.total_volume}</div>                        
+                    <div className={coin.price_change_percentage_24h < 0  ? 'hourCurrency decrease' : 'hourCurrency increase'}>{coin.price_change_percentage_24h}%</div>
+                    <div className="hourVolume">${coin.total_volume}</div>                        
                     </div>
                     <div className="underline"></div>     
                 </div>
+                
                 ))
             }
+            
             
     </div>
   )

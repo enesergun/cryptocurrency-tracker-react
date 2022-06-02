@@ -12,6 +12,13 @@ const GlobalStyle = createGlobalStyle`
         background: #f0f0f5;
         margin: 0 auto;
     }
+    a {
+        text-decoration: none;    
+        color: #000;    
+    }
+    a:visited {
+        color: #000;
+    }
 `
 
 export default GlobalStyle

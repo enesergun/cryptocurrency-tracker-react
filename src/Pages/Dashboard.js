@@ -123,14 +123,14 @@ function Dashboard() {
       
       <ListStyled>
         {
-            loading ? <ClipLoader /> : <List listData={listData} handleFavorite={handleFavorite} star={false}/> 
+            loading ? <ClipLoader /> : <List listData={listData} handleFavorite={handleFavorite} star={false} favoriteList={favorite}/> 
         }
             
         
       </ListStyled>
 
       <PaginationStyled>
-        <Pagination totalPage={totalPage} currentPage={currentPage} click={setPage}/>
+        <Pagination totalPage={totalPage} currentPage={currentPage} click={setPage} />
       </PaginationStyled>
 
         
