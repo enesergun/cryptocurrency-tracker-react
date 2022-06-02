@@ -11,33 +11,7 @@ const CoinDetailStyled = styled.div`
       border:none;
   }
 
-  .Intro {
-    display: flex;
-  }
-  .CoinHeader,
-  .CoinInformation {
-      margin-top: 50px;
-      width: 50%;
-  }
-
-  .description {
-      margin-top: 20px;
-  }
-  .InformationContainer {
-      max-width: 80%;
-      margin: 0 auto;      
-  }
-
-  .info {
-      padding: 10px 0;
-  }
-  .info-item {
-      display: flex;      
-      padding: 10px 0;
-  }
-  .title {
-      width: 30%;
-  }
+ 
 `
 
 export default CoinDetailStyled;

@@ -6,6 +6,7 @@ export default axios.create({baseURL});
 export const URL = {    
     global: '/global',
     coins: '/coins/markets',
-    search: '/search'
+    search: '/search',
+    coin: '/coins',
   
 }

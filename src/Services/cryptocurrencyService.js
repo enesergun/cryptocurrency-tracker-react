@@ -49,5 +49,23 @@ export const getSearchCoin = async (coinName) => {
         }
     } catch (error) {
         console.log(error);
-    }
-    }
+  }
+}
+
+export const getCoin = async (id) => {
+  try {
+      const res = await axios.get(URL.coin + `/${id}`);  
+        
+      if(res.status === 200) {
+          
+      return res.data;
+      }
+      else {
+      return {
+          error: 'Data gelmedi'
+      }
+      }
+  } catch (error) {
+      console.log(error);
+}
+}
