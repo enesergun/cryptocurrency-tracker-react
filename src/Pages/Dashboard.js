@@ -9,12 +9,14 @@ import ListStyled from '../Components/styles/ListStyled.styled';
 import SearchStyled from '../Components/styles/SearchStyled.styled';
 import PaginationStyled from '../Components/styles/PaginationStyled.styled';
 import { getAllCoin, getGlobalMarketData } from '../Services/cryptocurrencyService';
+import {useTracker} from '../Context/tracker'
 
 import ClipLoader from "react-spinners/ClipLoader";
 
 
 
 function Dashboard() {
+    const {currencyChoice} = useTracker();
     const [global, setGlobal] = useState([]);
     const [listData, setListData] = useState([]);
     const [favorite, setFavorite] = useState([]);
@@ -102,6 +104,11 @@ function Dashboard() {
 
   return (
     <>
+    <select name="" id="" >
+        <option value="" >Select</option>
+        <option value="" >usd</option>
+        <option value="" >try</option>
+    </select>
     <DashboardStyled>
       <GlobalMarketStyled>
         <GlobalMarket globalData={global}/>
