@@ -13,7 +13,7 @@ const ListStyled = styled.div`
     }
     .table,
     .coin {
-        display: flex;
+        display: flex;        
                
     }
     .rank {
@@ -37,6 +37,11 @@ const ListStyled = styled.div`
         height: 1px;
         background-color: #e6e6e6;
     }
+    @media only screen and (max-width: 425px) {
+        .table {
+            min-width: 363px;                        
+        }
+
     
 `
 

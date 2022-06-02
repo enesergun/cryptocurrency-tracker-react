@@ -23,6 +23,22 @@ const GlobalMarketStyled = styled.div`
     .totalData span {
         font-size: 12px;
     }
+    @media only screen and (min-width: 320px) {
+        .totalData {
+            width: 100%;   
+            margin-bottom: 10px;     
+      }
+      @media only screen and (min-width: 768px) {
+        .totalData {
+            width: 45%;               
+            margin-bottom: 10px;     
+      }
+      @media only screen and (min-width: 1440px) {
+        .totalData {
+            width: 20%;              
+            margin-bottom: 10px;     
+      }
+  
   
 `
 
