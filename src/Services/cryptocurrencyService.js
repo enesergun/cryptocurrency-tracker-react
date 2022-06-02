@@ -17,9 +17,9 @@ export const getGlobalMarketData = async () => {
     }
   }
 
-export const getAllCoin = async () => {
+export const getAllCoin = async (page) => {
   try {
-    const res = await axios.get(URL.coins + "?vs_currency=usd&per_page=100&page=1&sparkline=true");    
+    const res = await axios.get(URL.coins + `?vs_currency=usd&per_page=100&page=${page}&sparkline=true`);    
     if(res.status === 200) {
         
       return res.data;
