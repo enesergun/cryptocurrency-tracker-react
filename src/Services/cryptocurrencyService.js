@@ -67,5 +67,24 @@ export const getCoin = async (id) => {
       }
   } catch (error) {
       console.log(error);
+  }
 }
+
+export const getCoinChart = async (id, currency = 'usd', days = 365) => {
+  try {
+      const res = await axios.get(URL.coin + `/${id}/market_chart?vs_currency=${currency}&days=${days}`);  
+        
+      if(res.status === 200) {
+          
+      return res.data;
+      }
+      else {
+      return {
+          error: 'Data gelmedi'
+      }
+      }
+  } catch (error) {
+      console.log(error);
+  }
 }
+

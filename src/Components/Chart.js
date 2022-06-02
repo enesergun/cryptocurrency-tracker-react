@@ -1,8 +1,80 @@
-import React from 'react'
+import  { useEffect, useState } from 'react';
 
-const Chart = () => {
+import { getCoinChart } from '../Services/cryptocurrencyService';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,    
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,         
+);
+
+
+
+const Chart = ({id}) => {
+  const [historicalData, setHistoricalData] = useState([])  
+  const [days, setDays] = useState(1);
+  const [currency, setCurrency] = useState('usd');
+
+
+  useEffect(() => {
+    coinChartData();
+  }, [days]); 
+
+
+  const coinChartData = async () => {
+    const res = await getCoinChart(id, currency, days);
+      setHistoricalData(res.prices);
+  }
+
+  
   return (
-    <div>Chart</div>
+    <div>
+      <div className="buttons">
+        <button onClick={() => setDays(1)} className={days === 1 ? 'active' : ""}>24h</button>
+        <button onClick={() => setDays(7)} className={days === 7 ? 'active' : ""}>7d</button>
+        <button onClick={() => setDays(30)} className={days === 30 ? 'active' : ""}>30d</button>
+        <button onClick={() => setDays(365)} className={days === 365 ? 'active' : ""}>1y</button>
+      </div>
+       <Line
+              data={{
+                labels: historicalData.map((coin) => {
+                  let date = new Date(coin[0]);
+                  let time =
+                    date.getHours() > 12
+                      ? `${date.getHours() - 12}:${date.getMinutes()} PM`
+                      : `${date.getHours()}:${date.getMinutes()} AM`;
+                  return days === 1 ? time : date.toLocaleDateString();
+                }),
+
+                datasets: [
+                  {
+                    data: historicalData.map((coin) => coin[1]),
+                    label: `Price:  ${currency}`,
+                    borderColor: "#EEBC1D",
+                    
+                  },
+                ],
+              }}
+
+              options={{
+                elements: {
+                  point: {
+                    radius: 1.5,
+                  },
+                },
+              }}
+          />
+    </div>
   )
 }
 

@@ -5,6 +5,7 @@ import CoinInformation from '../Components/CoinInformation';
 import Chart from '../Components/Chart';
 
 
+
 import CoinDetailStyled from '../Components/styles/CoinDetailStyled.styled';
 import IntroStyled from '../Components/styles/IntroStyled.styled';
 import ChartStyled from '../Components/styles/ChartStyled.styled';
@@ -15,11 +16,13 @@ import { getCoin } from '../Services/cryptocurrencyService';
 
 
 function CoinDetail() {
-  const { id } = useParams();
+  const { id } = useParams();  
   const [coin, setCoin] = useState();
+  
+
 
   useEffect(() => {
-    coinData();      
+    coinData();          
   }, [])
   
   
@@ -29,6 +32,9 @@ function CoinDetail() {
     
     setCoin(res);
   }
+
+
+
 
 
   return (
@@ -42,7 +48,7 @@ function CoinDetail() {
       </IntroStyled>
 
       <ChartStyled>
-        <Chart />
+        <Chart id={id} />
       </ChartStyled>
 
 
