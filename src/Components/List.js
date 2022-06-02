@@ -5,6 +5,7 @@ import 'animate.css';
 import NotAvailable from '../Constants/icons/NotAvailable';
 import { Link } from 'react-router-dom';
 
+import { numberWithCommas } from '../Utils/numberWithCommas';
 
 const List = ({listData, handleFavorite, star, favoriteList}) => {       
      
@@ -44,9 +45,9 @@ const List = ({listData, handleFavorite, star, favoriteList}) => {
                     
                     </Link>
                     </div>
-                    <div className="price">${coin.current_price}</div>
+                    <div className="price">${numberWithCommas(coin.current_price.toFixed(2))}</div>
                     <div className={coin.price_change_percentage_24h < 0  ? 'hourCurrency decrease' : 'hourCurrency increase'}>{coin.price_change_percentage_24h}%</div>
-                    <div className="hourVolume">${coin.total_volume}</div>                        
+                    <div className="hourVolume">${numberWithCommas(coin.total_volume.toFixed(2))}</div>                        
                     </div>
                     <div className="underline"></div>     
                 </div>
