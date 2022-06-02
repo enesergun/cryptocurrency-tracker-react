@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import GlobalMarket from '../Components/GlobalMarket';
 import List from '../Components/List';
 import Search from '../Components/Search';
@@ -7,6 +7,9 @@ import GlobalMarketStyled from '../Components/styles/GlobalMarketStyled.styled';
 import ListStyled from '../Components/styles/ListStyled.styled';
 import SearchStyled from '../Components/styles/SearchStyled.styled';
 import { getAllCoin, getGlobalMarketData } from '../Services/cryptocurrencyService';
+
+import ClipLoader from "react-spinners/ClipLoader";
+
 
 
 function Dashboard() {
@@ -87,7 +90,9 @@ function Dashboard() {
       </SearchStyled>
       
       <ListStyled>
-        <List listData={listData} handleFavorite={handleFavorite} star={false}/> 
+        <Suspense fallback={<ClipLoader />}>
+            <List listData={listData} handleFavorite={handleFavorite} star={false}/> 
+        </Suspense>
       </ListStyled>
 
     </DashboardStyled>
