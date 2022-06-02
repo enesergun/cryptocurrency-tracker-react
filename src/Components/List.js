@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Star from '../Constants/icons/Star';
 
 import 'animate.css';
+import NotAvailable from '../Constants/icons/NotAvailable';
 
 
 const List = ({listData, handleFavorite, star}) => {    
@@ -9,7 +10,7 @@ const List = ({listData, handleFavorite, star}) => {
 
 
   return (
-    <div className='animate__animated animate__backInLeft '>
+    <div className='animate__animated animate__backInLeft '>        
     <div className="table">                
         <div className="table-header"></div>    
         <div className="rank">#</div>
@@ -27,6 +28,11 @@ const List = ({listData, handleFavorite, star}) => {
                         <Star color={star ? '#fc6' : "gray"}/>  
                     </div>                                              
                     <div className="rank">{coin.market_cap_rank}</div>
+                    <div className="criptoLogo">
+                        {
+                            coin.image ? <img src={coin.image} alt="" /> : <NotAvailable />
+                        }
+                    </div>
                     <div className="coinName">{coin.name}</div>
                     <div className="price">${coin.current_price}</div>
                     <div className="hourCurrency">{coin.price_change_percentage_24h}</div>

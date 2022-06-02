@@ -9,7 +9,7 @@ const ListStyled = styled.div`
     .table-header {
         width: 20px;
     }
-    .table div{
+    .table div{        
         font-size: 12px;
         font-weight: bold;
     }
@@ -17,6 +17,9 @@ const ListStyled = styled.div`
     .coin {
         display: flex;        
                
+    }
+    .table  .coinName {
+        margin-right: 30px;
     }
     .rank {
         margin-left: 30px;
@@ -41,6 +44,12 @@ const ListStyled = styled.div`
     }
     .star {
         cursor: pointer;        
+    }
+
+    .criptoLogo img {
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
     }
     
     @media only screen and (max-width: 425px) {

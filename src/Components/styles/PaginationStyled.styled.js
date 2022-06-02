@@ -10,8 +10,7 @@ const PaginationStyled = styled.div`
   }
   & > span {
       margin: 0 3px;
-      border: 1px solid #ccc;
-      
+      border: 1px solid #ccc;      
       cursor: pointer;
     padding: 5px 10px;      
   }
