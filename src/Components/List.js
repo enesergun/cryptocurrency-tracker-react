@@ -1,32 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react';
+import Star from '../Constants/icons/Star';
 
-const List = () => {
+import 'animate.css';
+
+
+const List = ({listData, handleFavorite, star}) => {    
+   
+
+
   return (
-    <>
+    <div className='animate__animated animate__backInLeft '>
     <div className="table">                
-                <div className="rank">#</div>
-                <div className="coinName">Coin</div>
-                <div className="price">price</div>
-                <div className="hourCurrency">24h</div>
-                <div className="hourVolume">24h Volume</div>
-            </div>                   
-            <div className="underline"></div>
-            <div className="coin">
-                <div className="rank">1</div>
-                <div className="coinName">BTC</div>
-                <div className="price">$45654654</div>
-                <div className="hourCurrency">-6.6%	</div>
-                <div className="hourVolume">$34,212,513,501</div>
-            </div> 
-            <div className="underline"></div>
-            <div className="coin">
-                <div className="rank">1</div>
-                <div className="coinName">BTC</div>
-                <div className="price">$45654654</div>
-                <div className="hourCurrency">-6.6%	</div>
-                <div className="hourVolume">$34,212,513,501</div>
-            </div> 
-    </>
+        <div className="table-header"></div>    
+        <div className="rank">#</div>
+        <div className="coinName">Coin</div>
+        <div className="price">price</div>
+        <div className="hourCurrency">24h</div>
+        <div className="hourVolume">24h Volume</div>
+    </div>                   
+    <div className="underline"></div>            
+        {
+            listData?.map((coin, id) => (
+                <div key={id}>
+                <div className="coin" >                        
+                    <div className="star" onClick={() => handleFavorite(coin)}>
+                        <Star color={star ? '#fc6' : "gray"}/>  
+                    </div>                                              
+                    <div className="rank">{coin.market_cap_rank}</div>
+                    <div className="coinName">{coin.name}</div>
+                    <div className="price">${coin.current_price}</div>
+                    <div className="hourCurrency">{coin.price_change_percentage_24h}</div>
+                    <div className="hourVolume">{coin.total_volume}</div>                        
+                    </div>
+                    <div className="underline"></div>     
+                </div>
+                ))
+            }
+            
+    </div>
   )
 }
 

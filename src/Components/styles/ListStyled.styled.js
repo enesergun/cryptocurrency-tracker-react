@@ -6,7 +6,9 @@ const ListStyled = styled.div`
     border-radius: 15px;      
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     background-color: #F5F5F5;
-
+    .table-header {
+        width: 20px;
+    }
     .table div{
         font-size: 12px;
         font-weight: bold;
@@ -37,6 +39,10 @@ const ListStyled = styled.div`
         height: 1px;
         background-color: #e6e6e6;
     }
+    .star {
+        cursor: pointer;        
+    }
+    
     @media only screen and (max-width: 425px) {
         .table {
             min-width: 363px;                        
