@@ -1,5 +1,5 @@
 import  { useEffect, useState } from 'react';
-
+import {useTracker} from '../Context/tracker';
 import { getCoinChart } from '../Services/cryptocurrencyService';
 import {
   Chart as ChartJS,
@@ -21,14 +21,13 @@ ChartJS.register(
 
 
 const Chart = ({id}) => {
+  const {currency,} = useTracker();
   const [historicalData, setHistoricalData] = useState([])  
-  const [days, setDays] = useState(1);
-  const [currency, setCurrency] = useState('usd');
-
+  const [days, setDays] = useState(1);  
 
   useEffect(() => {
     coinChartData();
-  }, [days]); 
+  }, [currency, days]); 
 
 
   const coinChartData = async () => {

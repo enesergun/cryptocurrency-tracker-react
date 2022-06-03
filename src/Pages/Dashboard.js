@@ -9,14 +9,15 @@ import ListStyled from '../Components/styles/ListStyled.styled';
 import SearchStyled from '../Components/styles/SearchStyled.styled';
 import PaginationStyled from '../Components/styles/PaginationStyled.styled';
 import { getAllCoin, getGlobalMarketData } from '../Services/cryptocurrencyService';
-import {useTracker} from '../Context/tracker'
+import {useTracker} from '../Context/tracker';
 
 import ClipLoader from "react-spinners/ClipLoader";
 
 
 
 function Dashboard() {
-    const {currencyChoice} = useTracker();
+    const {currencyChoice, currency, currencySymbol} = useTracker();
+
     const [global, setGlobal] = useState([]);
     const [listData, setListData] = useState([]);
     const [favorite, setFavorite] = useState([]);
@@ -33,10 +34,11 @@ function Dashboard() {
 
     useEffect(() => {
         listDataFunc();
-    }, [currentPage]);
+    }, [currentPage, currency]);
 
-
-
+    
+  
+    
     const globalMarketData = async () => {
         const data = await getGlobalMarketData();
         setGlobal(data);     
@@ -45,8 +47,8 @@ function Dashboard() {
 
     const listDataFunc = async () => {     
         setLoading(true);
-        const favoriteStorage = JSON.parse(localStorage.getItem('favorite'));
-        const coins = JSON.parse(localStorage.getItem(currentPage));
+        const favoriteStorage = JSON.parse(localStorage.getItem(`favorite`));
+        const coins = JSON.parse(localStorage.getItem(`${currentPage}-${currency}`));
 
         if (favoriteStorage) {
             setFavorite(favoriteStorage);
@@ -56,9 +58,10 @@ function Dashboard() {
             setListData(coins);
             setLoading(false);
         } else {
-            const data = await getAllCoin(currentPage);
+            const data = await getAllCoin(currency, currentPage);
+            console.log(currency);
             setListData(data);
-            localStorage.setItem(currentPage, JSON.stringify(data));
+            localStorage.setItem(`${currentPage}-${currency}`, JSON.stringify(data));
             setLoading(false);
         }
         
@@ -70,22 +73,22 @@ function Dashboard() {
       const prevFavorite = [...favorite];      
       if(favorite.includes(coin)){
         setFavorite(favorite.filter(item => item !== coin));
-        const favoriteStorage = JSON.parse(localStorage.getItem('favorite'));
+        const favoriteStorage = JSON.parse(localStorage.getItem(`favorite`));
 
         favoriteStorage.map((item, index) => {
             if (item.id === coin.id) {
                 favoriteStorage.splice(index, 1);
-                localStorage.setItem('favorite', JSON.stringify(favoriteStorage));
+                localStorage.setItem(`favorite`, JSON.stringify(favoriteStorage));
             }
         })
       }
       else{
         const newFavorite = favorite.concat(coin);
         if (prevFavorite.length > 0) {
-          localStorage.setItem('favorite', JSON.stringify(newFavorite));
+          localStorage.setItem(`favorite`, JSON.stringify(newFavorite));
         } 
         else {
-            localStorage.setItem('favorite', JSON.stringify(newFavorite));
+            localStorage.setItem(`favorite`, JSON.stringify(newFavorite));
         }
         setFavorite(newFavorite);
       }
@@ -100,18 +103,23 @@ function Dashboard() {
         } else if (value.type === "add") {
           setCurrentPage(value.number);
         }
-      };
+    };
+
+    const handleCurrency = (e) => {            
+      currencyChoice(e.target.value);
+    }
+
+    
 
   return (
     <>
-    <select name="" id="" >
-        <option value="" >Select</option>
-        <option value="" >usd</option>
-        <option value="" >try</option>
+    <select name="" id="" onChange={handleCurrency}>        
+        <option value="usd" >usd</option>
+        <option value="try" >try</option>
     </select>
     <DashboardStyled>
       <GlobalMarketStyled>
-        <GlobalMarket globalData={global}/>
+        <GlobalMarket globalData={global} />
         </GlobalMarketStyled>
 
         
@@ -130,7 +138,7 @@ function Dashboard() {
       
       <ListStyled>
         {
-            loading ? <ClipLoader /> : <List listData={listData} handleFavorite={handleFavorite} star={false} favoriteList={favorite}/> 
+            loading ? <ClipLoader /> : <List listData={listData} handleFavorite={handleFavorite} star={false} favoriteList={favorite} currencySymbol={currencySymbol}/> 
         }
             
         

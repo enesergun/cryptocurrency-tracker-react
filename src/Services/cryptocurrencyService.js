@@ -15,13 +15,12 @@ export const getGlobalMarketData = async () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  }  
 
-export const getAllCoin = async (page) => {
+export const getAllCoin = async (currency, page) => {
   try {
-    const res = await axios.get(URL.coins + `?vs_currency=usd&per_page=50&page=${page}&sparkline=true`);    
-    if(res.status === 200) {
-        
+    const res = await axios.get(URL.coins + `?vs_currency=${currency}&per_page=100&page=${page}&sparkline=true`);    
+    if(res.status === 200) {              
       return res.data;
     }
     else {
@@ -70,11 +69,12 @@ export const getCoin = async (id) => {
   }
 }
 
-export const getCoinChart = async (id, currency = 'usd', days = 365) => {
+export const getCoinChart = async (id, currency, days = 1) => {
   try {
       const res = await axios.get(URL.coin + `/${id}/market_chart?vs_currency=${currency}&days=${days}`);  
         
       if(res.status === 200) {
+        console.log(res);
           
       return res.data;
       }

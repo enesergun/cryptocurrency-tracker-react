@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import Description from '../Components/Description';
 import CoinInformation from '../Components/CoinInformation';
 import Chart from '../Components/Chart';
-
+import {useTracker} from '../Context/tracker';
 
 
 import CoinDetailStyled from '../Components/styles/CoinDetailStyled.styled';
@@ -15,7 +15,8 @@ import { getCoin } from '../Services/cryptocurrencyService';
 
 
 
-function CoinDetail() {
+function CoinDetail() {  
+  const {currencyChoice,} = useTracker();
   const { id } = useParams();  
   const [coin, setCoin] = useState();
   
@@ -34,11 +35,17 @@ function CoinDetail() {
   }
 
 
-
+  const handleCurrency = (e) => {            
+    currencyChoice(e.target.value);
+  }
 
 
   return (
     <CoinDetailStyled>
+      <select name="" id="" onChange={handleCurrency}>        
+        <option value="usd" >usd</option>
+        <option value="try" >try</option>
+    </select>
       <Link to="/">
         <button>Back to the dashboard</button>
       </Link>

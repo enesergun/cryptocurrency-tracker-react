@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'animate.css';
 import { numberWithCommas } from '../Utils/numberWithCommas';
 
+import {useTracker} from '../Context/tracker';
 
 
 const GlobalMarket = ({globalData}) => {
-
+    const {currencyChoice, currency, currencySymbol} = useTracker();
     
+        
   return (
     <>
     <h1>Cryptocurrency Prices by Market Cap</h1>

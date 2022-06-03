@@ -4,11 +4,16 @@ const TrackerContext = React.createContext();
  
 const TrackerProvider = ({children}) => {
     const [currency, setCurrency] = useState('usd');
+    const [currencySymbol, setCurrencySymbol] = useState('$');
 
     const currencyChoice = (element) => {
-        setCurrency(element);
-        console.log(element);
-
+        if (element === 'try') {            
+            setCurrencySymbol('TRY');
+        }
+        else {
+            setCurrencySymbol('$');
+        }
+        setCurrency(element);        
     }
     
 
@@ -16,6 +21,8 @@ const TrackerProvider = ({children}) => {
         <TrackerContext.Provider 
             value={{
                 currencyChoice,
+                currency,
+                currencySymbol
             }}
         >
             {children}
