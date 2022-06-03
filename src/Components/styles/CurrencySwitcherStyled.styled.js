@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 const CurrencySwitcherStyled = styled.div`
   float: right;
+  background-color: #293143;
   
   select {
     

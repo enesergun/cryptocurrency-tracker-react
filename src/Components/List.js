@@ -33,7 +33,7 @@ const List = ({listData, handleFavorite, star, favoriteList}) => {
     const { currencySymbol} = useTracker();
         
   return (
-    <div className='animate__animated animate__backInLeft '>        
+    <div className='animate__animated animate__backInLeft wrap'>        
     <div className="table">                
         <div className="table-header"></div>    
         <div className="rank">#</div>
@@ -54,11 +54,11 @@ const List = ({listData, handleFavorite, star, favoriteList}) => {
                     <div className="rank">{coin.market_cap_rank}</div>
                     <div className='coinHeader'>
                     <Link to={`/coins/${coin.id}`}>
-                    <div className="criptoLogo">
+                    {<div className="criptoLogo">
                         {
                             coin.image ? <img src={coin.image} alt="" /> : <NotAvailable />
                         }
-                    </div>
+                    </div>}
                     <div className="coinName ListCoinName">
                         <span className='ListCoinNameSpanElement'>{coin.name}</span>
                         <span className='symbol'>{coin.symbol}</span>
@@ -67,7 +67,7 @@ const List = ({listData, handleFavorite, star, favoriteList}) => {
                     </Link>
                     </div>
                     <div className="price">{currencySymbol} {numberWithCommas(coin.current_price.toFixed(2))}</div>
-                    <div className={coin.price_change_percentage_24h < 0  ? 'hourCurrency decrease' : 'hourCurrency increase'}>{coin.price_change_percentage_24h}%</div>
+                    <div className={coin.price_change_percentage_24h < 0  ? 'hourCurrency decrease' : 'hourCurrency increase'}>{coin.price_change_percentage_24h?.toFixed(2)}%</div>
                     <div className="hourVolume">{currencySymbol} {numberWithCommas(coin.total_volume.toFixed(2))}</div>  
                     
                     </div>

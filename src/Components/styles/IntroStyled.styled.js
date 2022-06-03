@@ -22,7 +22,7 @@ const IntroStyled = styled.div`
       margin-top: 20px;
   }
   .statisticsContainer {
-      background-color: #f5f5f5;      
+      background-color: #293143;      
       padding: 10px;    
       border-radius: 15px;
       box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
@@ -80,6 +80,22 @@ const IntroStyled = styled.div`
     }
     .title-link a svg {
         margin-right: 10px;
+    }
+    @media (min-width: 275px) and (max-width: 768px) {
+        flex-direction: column;
+        width: 100%;
+        .CoinHeader {
+            width: 100%;
+        }
+        .statistics {
+            flex-direction: column;
+        }
+        .statisticsElement {
+            width: 100%;
+        }
+        .CoinInformation {
+            width: 100%;
+        }
     }
 `
 

@@ -6,16 +6,18 @@ const SearchStyled = styled.div`
         height: 45px;
         border-radius: 15px;
         border:none;
-        background-color: #f5f5f5;
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-        padding: 10px;                
+        background-color: #293143;
+        box-shadow: 0px 0px 15px -4px #000000;
+        padding: 10px;     
+        color: #fff;           
     }
     .searchedCoinList {    
         width: 100%;
         padding: 10px;        
-        background-color: #f5f5f5;      
+        background-color: #293143; 
         display: flex;
         align-items: center;  
+        color: #fff;
     }
     .coinList {
         width: 35%;

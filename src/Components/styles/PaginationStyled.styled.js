@@ -6,13 +6,20 @@ const PaginationStyled = styled.div`
   
   
   .active {
-    background-color: red;
+    background-color: #47c2be;
   }
   & > span {
       margin: 0 3px;
       border: 1px solid #ccc;      
       cursor: pointer;
     padding: 5px 10px;      
+  }
+  & > span:hover {
+      background-color: #47c2be;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 10px;
   }
 `
 

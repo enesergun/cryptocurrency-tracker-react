@@ -64,7 +64,7 @@ const Chart = ({id}) => {
                   {
                     data: historicalData.map((coin) => coin[1]),
                     label: `Price:  ${currency}`,
-                    borderColor: "#EEBC1D",
+                    borderColor: "#3fb6b0",
                     
                   },
                 ],

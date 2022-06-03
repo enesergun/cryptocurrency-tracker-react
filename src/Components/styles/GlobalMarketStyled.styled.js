@@ -8,12 +8,12 @@ const GlobalMarketStyled = styled.div`
         margin: 10px 0;
     }
     .totalData {        
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        box-shadow: 0px 0px 15px -4px #000000;
         border-radius: 15px;        
         width: 20%;
         min-width: 20%;
         height: 100px;
-        background-color: #f5f5f5;
+        background-color: #293143;
         padding: 20px;        
     }
     .totalPrice {
@@ -23,7 +23,7 @@ const GlobalMarketStyled = styled.div`
     .totalData span {
         font-size: 12px;
     }
-    @media only screen and (min-width: 320px) {
+    @media only screen and (min-width: 275px) {
         .totalData {
             width: 100%;   
             margin-bottom: 10px;     

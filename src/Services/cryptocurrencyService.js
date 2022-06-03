@@ -2,7 +2,11 @@ import axios, { URL } from "../Constants/axios";
 
 export const getGlobalMarketData = async () => {
     try {
-      const res = await axios.get(URL.global);    
+      const res = await axios.get(URL.global, {
+        headers: {
+          'Cache-Control': 'max-age=31536000',
+      }
+      });    
       if(res.status === 200) {
           
         return res.data.data;
@@ -19,7 +23,10 @@ export const getGlobalMarketData = async () => {
 
 export const getAllCoin = async (currency, page) => {
   try {
-    const res = await axios.get(URL.coins + `?vs_currency=${currency}&per_page=100&page=${page}&sparkline=true`);    
+    const res = await axios.get(URL.coins + `?vs_currency=${currency}&per_page=100&page=${page}&sparkline=true`, {
+      headers: {
+        'Cache-Control': 'max-age=31536000',
+    }});    
     if(res.status === 200) {              
       return res.data;
     }

@@ -4,8 +4,12 @@ const ListStyled = styled.div`
     margin: 40px 0;
     padding: 10px;
     border-radius: 15px;      
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    background-color: #F5F5F5;
+    box-shadow: 0px 0px 15px -4px #000000;
+    background-color: #293143;
+    
+    .wrap {
+        overflow-y:auto;
+    }
     .table-header {
         width: 20px;
     }
@@ -17,6 +21,9 @@ const ListStyled = styled.div`
     .coin {
         display: flex;        
                
+    }
+    .table {
+        min-width: 550px;
     }
     .coin {
         padding: 15px 0;
@@ -33,7 +40,7 @@ const ListStyled = styled.div`
         width: 30%;      
     }
     .ListCoinName {
-
+        color: #fff;
         width: 90%;
     }
     .ListCoinNameSpanElement{
@@ -49,17 +56,16 @@ const ListStyled = styled.div`
     .coinHeader a {
         display: flex;        
     }
-    .price {
-        width: 20%;
-    }
+    .price,
     .hourCurrency {
-        width: 20%;
-    }
+        width: 15%;
+    }    
 
     .underline {               
         width: 100%;
         height: 1px;
-        background-color: #e6e6e6;
+        background-color: black;
+        min-width: 550px;
     }
     .star {
         cursor: pointer;        
@@ -71,21 +77,22 @@ const ListStyled = styled.div`
         height: 20px;
     }
     .decrease {
-        color: red;        
+        color: #ff7060;     
     }
     .increase {
-        color: green;
+        color: #26da71;
+    }
+    .container {
+        min-width: 550px;
     } 
 
     .container:hover {
-        background-color: white;
+        background-color: #343e56;
     }
     
-    @media only screen and (max-width: 425px) {
-        .table {
-            min-width: 363px;                        
-        }
-
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
     
 `
 
