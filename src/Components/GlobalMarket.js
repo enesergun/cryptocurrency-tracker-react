@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'animate.css';
 import { numberWithCommas } from '../Utils/numberWithCommas';
 
-import {useTracker} from '../Context/tracker';
+
 
 
 const GlobalMarket = ({globalData}) => {
-    const {currencyChoice, currency, currencySymbol} = useTracker();
+    
     
         
   return (

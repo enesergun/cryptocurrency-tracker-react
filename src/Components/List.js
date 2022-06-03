@@ -7,12 +7,31 @@ import { Link } from 'react-router-dom';
 
 import {useTracker} from '../Context/tracker';
 
+
 import { numberWithCommas } from '../Utils/numberWithCommas';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,    
+    
+  } from 'chart.js';
+  import { Line } from 'react-chartjs-2';
+  
+  
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,         
+  );
+
+    const historicalData = ["pzt", "sal", "car", "per", "cum", "cts", "paz", "son", "cumartesi", "pazar"];
 
 const List = ({listData, handleFavorite, star, favoriteList}) => {       
-    const {currencyChoice, currency, currencySymbol} = useTracker();
-    
-    
+    const { currencySymbol} = useTracker();
+        
   return (
     <div className='animate__animated animate__backInLeft '>        
     <div className="table">                
@@ -49,7 +68,8 @@ const List = ({listData, handleFavorite, star, favoriteList}) => {
                     </div>
                     <div className="price">{currencySymbol} {numberWithCommas(coin.current_price.toFixed(2))}</div>
                     <div className={coin.price_change_percentage_24h < 0  ? 'hourCurrency decrease' : 'hourCurrency increase'}>{coin.price_change_percentage_24h}%</div>
-                    <div className="hourVolume">{currencySymbol} {numberWithCommas(coin.total_volume.toFixed(2))}</div>                        
+                    <div className="hourVolume">{currencySymbol} {numberWithCommas(coin.total_volume.toFixed(2))}</div>  
+                    
                     </div>
                     <div className="underline"></div>     
                 </div>

@@ -6,7 +6,10 @@ import {
   CategoryScale,
   LinearScale,
   PointElement,
-  LineElement,    
+  LineElement,  
+  
+  Tooltip,
+  Legend,  
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
@@ -15,7 +18,9 @@ ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
-  LineElement,         
+  LineElement,  
+  Tooltip,
+  Legend,         
 );
 
 
@@ -44,7 +49,7 @@ const Chart = ({id}) => {
         <button onClick={() => setDays(30)} className={days === 30 ? 'active' : ""}>30d</button>
         <button onClick={() => setDays(365)} className={days === 365 ? 'active' : ""}>1y</button>
       </div>
-       <Line
+      <Line
               data={{
                 labels: historicalData.map((coin) => {
                   let date = new Date(coin[0]);

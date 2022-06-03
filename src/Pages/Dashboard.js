@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense } from 'react';
+import React, { useEffect, useState } from 'react';
 import GlobalMarket from '../Components/GlobalMarket';
 import List from '../Components/List';
 import Pagination from '../Components/Pagination';
@@ -34,6 +34,7 @@ function Dashboard() {
 
     useEffect(() => {
         listDataFunc();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage, currency]);
 
     
@@ -75,6 +76,7 @@ function Dashboard() {
         setFavorite(favorite.filter(item => item !== coin));
         const favoriteStorage = JSON.parse(localStorage.getItem(`favorite`));
 
+        // eslint-disable-next-line array-callback-return
         favoriteStorage.map((item, index) => {
             if (item.id === coin.id) {
                 favoriteStorage.splice(index, 1);

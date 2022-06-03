@@ -3,7 +3,7 @@ import { numberWithCommas } from '../Utils/numberWithCommas';
 import {useTracker} from '../Context/tracker';
 
 const Description = ({data}) => {
-  const {currencyChoice, currency, currencySymbol} = useTracker();
+  const {currency, currencySymbol} = useTracker();
   console.log(currency);
 
   
