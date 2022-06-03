@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { getSearchCoin } from '../Services/cryptocurrencyService';
+import { Link } from 'react-router-dom';
 
 import NotAvailable from '../Constants/icons/NotAvailable';
 
@@ -20,7 +21,7 @@ const Search = () => {
 
   return (
     <>
-        <input type="text" className='searchInput' placeholder='Coin ara' onChange={(e) => handleCoin(e.target.value)} autoComplete='off'/>
+        <input type="text" className='searchInput' placeholder='Search Coin' onChange={(e) => handleCoin(e.target.value)} autoComplete='off'/>
 
         {
           coinName.length > 0 &&
@@ -31,10 +32,12 @@ const Search = () => {
             {
               coinList.map((item, id) => (
                 <div key={id}>
+                  <Link to={`coins/${item.id}`}>
                   <div className='searchedCoinList'>
                     <img src={item?.thumb} alt="" />
                     {item.name}
                   </div>
+                  </Link>
                 </div>
 
               ))

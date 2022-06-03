@@ -12,11 +12,12 @@ import { getAllCoin, getGlobalMarketData } from '../Services/cryptocurrencyServi
 import {useTracker} from '../Context/tracker';
 
 import ClipLoader from "react-spinners/ClipLoader";
+import CurrencySwitcher from '../Components/CurrencySwitcher';
 
 
 
 function Dashboard() {
-    const {currencyChoice, currency, currencySymbol} = useTracker();
+    const {currency, currencySymbol} = useTracker();
 
     const [global, setGlobal] = useState([]);
     const [listData, setListData] = useState([]);
@@ -107,18 +108,14 @@ function Dashboard() {
         }
     };
 
-    const handleCurrency = (e) => {            
-      currencyChoice(e.target.value);
-    }
+    
 
     
 
   return (
     <>
-    <select name="" id="" onChange={handleCurrency}>        
-        <option value="usd" >usd</option>
-        <option value="try" >try</option>
-    </select>
+    <CurrencySwitcher />
+
     <DashboardStyled>
       <GlobalMarketStyled>
         <GlobalMarket globalData={global} />

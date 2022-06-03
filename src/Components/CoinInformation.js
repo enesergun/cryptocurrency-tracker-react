@@ -25,23 +25,23 @@ const CoinInformation = ({data}) => {
               <div className='info-item'>
                 <div className="title">twitter</div>
                 <div className="title-link">
-                  <a href={`https://twitter.com/${data?.links.twitter_screen_name}`} target="_blank" rel="noopener noreferrer"> <Twitter /> github</a>
+                  <a href={`https://twitter.com/${data?.links.twitter_screen_name}`} target="_blank" rel="noopener noreferrer"> <Twitter /> twitter</a>
                 </div>
               </div>
 
               <div className='info-item'>
                 <div className="title">facebook</div>
                 <div className="title-link">
-                  <a href={`https://www.facebook.com/${data?.links.facebook_username}`} target="_blank" rel="noopener noreferrer"> <Facebook /> github</a>
+                  <a href={`https://www.facebook.com/${data?.links.facebook_username}`} target="_blank" rel="noopener noreferrer"> <Facebook /> facebook</a>
                 </div>
               </div>
               <div className='info-item'>
                 <div className="title">reddit</div>
-                <div className="title-link"><a href={data?.links.subreddit_url} target="_blank" rel="noopener noreferrer"> <Reddit /> github</a></div>
+                <div className="title-link"><a href={data?.links.subreddit_url} target="_blank" rel="noopener noreferrer"> <Reddit /> reddit</a></div>
               </div>
               <div className='info-item'>
                 <div className="title">official forum</div>
-                <div className="title-link"><a href={data?.links.official_forum_url} target="_blank" rel="noopener noreferrer"> <Forum /> github</a></div>
+                <div className="title-link"><a href={data?.links.official_forum_url} target="_blank" rel="noopener noreferrer"> <Forum /> forum</a></div>
               </div>
             </div>                                
           </div>

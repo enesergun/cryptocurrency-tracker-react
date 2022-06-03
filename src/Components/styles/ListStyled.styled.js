@@ -40,6 +40,7 @@ const ListStyled = styled.div`
         margin-right: 10px;
         display: inline-block;
         width: 50%;
+        font-weight: bold;
     }
     .symbol {
         text-transform: uppercase;

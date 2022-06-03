@@ -60,7 +60,7 @@ const List = ({listData, handleFavorite, star, favoriteList}) => {
                         }
                     </div>
                     <div className="coinName ListCoinName">
-                        <span className='ListCoinNameSpanElement'><strong>{coin.name}</strong></span>
+                        <span className='ListCoinNameSpanElement'>{coin.name}</span>
                         <span className='symbol'>{coin.symbol}</span>
                         </div>
                     
